@@ -1,5 +1,7 @@
 {% set name = "peak-finder-app" %}
 {% set version = "0.1.0" %}
+{% set python_min = "3.10" %}
+{% set python_max = "3.11" %}
 
 package:
   name: {{ name|lower }}
@@ -12,16 +14,16 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.10.0,<3.11
+    - python {{ python_min }}
     - poetry-core >=1.0.0
     - setuptools
     - pip
   run:
-    - python >=3.10.0,<3.11
+    - python >={{ python_min }},<{{ python_max }}
     - dask-core 2022.10.*
     - distributed 2022.10.*
     - numpy >=1.23.5,<1.24.0
@@ -51,6 +53,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
