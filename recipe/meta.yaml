@@ -1,13 +1,13 @@
 {% set name = "peak-finder-app" %}
-{% set version = "0.1.0" %}
+{% set version = "0.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/MiraGeoscience/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 926956a113b9af644a6a599bfad166ba228683dff98b86abbce6282765ceac5d
+  url: https://github.com/MiraGeoscience/{{ name }}/archive/v{{ version }}.zip
+  sha256: 9645b0a9ae9cf0073bb533de22341a278a782204cbadf6dc7dca41787f5579df
 
 build:
   noarch: python
@@ -60,7 +60,7 @@ about:
     Peak-finder-app is a package for the detection and grouping of time-domain electromagnetic 
     (TEM) anomalies measured along flight lines.
   license: MIT
-  license_file: 
+  license_file:
     - LICENSE
   doc_url: https://mirageoscience-peak-finder-app.readthedocs-hosted.com/
   dev_url: https://github.com/MiraGeoscience/peak-finder-app
