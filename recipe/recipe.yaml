@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: peak-finder-app
-  version: 0.1.0
+  version: 0.2.0
   python_min: 3.10
   python_max: 3.11
 
@@ -12,10 +12,10 @@ package:
 
 source:
   url: https://github.com/MiraGeoscience/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: 926956a113b9af644a6a599bfad166ba228683dff98b86abbce6282765ceac5d
+  sha256: df8e5a1ab0e14d79df7dc849bad9c1f7d698d405209f58db8f24553a6f49560a
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -27,20 +27,17 @@ requirements:
     - setuptools
   run:
     - python >=${{ python_min }},<${{ python_max }}
-    - dask-core 2022.10.*
-    - distributed 2022.10.*
-    - numpy >=1.23.5,<1.24.0
-    - plotly >=5.19.0,<5.20.0
-    - scipy >=1.10.1,<1.11.0
+    # Mira packages
+    - geoh5py >=0.10.0,<0.11.dev
+    - geoapps-utils >=0.4.0,<0.5.dev
+    - curve-apps >=0.2.0,<0.3.dev
+    # other direct dependencies
+    - dask-core >=2024.6,<2024.7.dev
+    - distributed >=2024.6,<2024.7.dev
+    - numpy >=1.26.0,<1.27.dev
+    - plotly >=5.19.0,<5.20.dev
+    - scipy >=1.14.0,<1.15.dev
     - tqdm >=4.66.1,<5.0.0
-    - geoh5py >=0.9.0,<0.10.0
-    - geoapps-utils >=0.3.0,<0.4.0
-    - curve-apps >=0.1.0,<0.2.0
-    - h5py >=3.2.1,<4.0.0
-    - pillow >=10.3.0,<10.4.0
-    - pydantic >=2.5.2,<2.6.0
-    - scikit-image >=0.20.0,<0.21.0
-    - tifffile 2024.2.12.*
   run_constraints:
     - dash >=2.12.0,<3.0.0
     - dash-daq >=0.5.0,<0.6.0
@@ -56,6 +53,7 @@ tests:
       imports:
         - peak_finder
       pip_check: true
+
 about:
   summary: Peak Finder App
   description: |
