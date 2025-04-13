@@ -3,6 +3,8 @@ schema_version: 1
 context:
   name: peak-finder-app
   version: 0.1.0
+  python_min: 3.10
+  python_max: 3.11
 
 package:
   name: ${{ name|lower }}
@@ -19,12 +21,12 @@ build:
 
 requirements:
   host:
-    - python >=3.10.0,<3.11
-    - poetry-core >=1.0.0
-    - setuptools
     - pip
+    - poetry-core >=1.0.0
+    - python ${{ python_min }}.*
+    - setuptools
   run:
-    - python >=3.10.0,<3.11
+    - python >=${{ python_min }},<${{ python_max }}
     - dask-core 2022.10.*
     - distributed 2022.10.*
     - numpy >=1.23.5,<1.24.0
@@ -50,11 +52,10 @@ requirements:
 
 tests:
   - python:
+      python_version: ${{ python_min }}.*
       imports:
         - peak_finder
       pip_check: true
-
-      python_version: ${{ python_min }}.*
 about:
   summary: Peak Finder App
   description: |
