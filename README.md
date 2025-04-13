@@ -16,7 +16,6 @@ Documentation: https://mirageoscience-peak-finder-app.readthedocs-hosted.com/
 Peak-finder-app is a package for the detection and grouping of time-domain electromagnetic
 (TEM) anomalies measured along flight lines.
 
-
 Current build status
 ====================
 
