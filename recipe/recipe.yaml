@@ -15,7 +15,7 @@ source:
   sha256: df8e5a1ab0e14d79df7dc849bad9c1f7d698d405209f58db8f24553a6f49560a
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -39,13 +39,11 @@ requirements:
     - scipy >=1.14.0,<1.15.dev
     - tqdm >=4.66.1,<5.0.0
   run_constraints:
-    - dash >=2.12.0,<3.0.0
-    - dash-daq >=0.5.0,<0.6.0
-    - flask >=3.0.3,<4.0.0
+    - dash >=2.12.0,<3.0.dev
+    - dash-daq >=0.5.0,<0.6.dev
+    - flask >=3.0.3,<4.0.dev
     - pyqtwebengine >=5.15.2,<5.15.7
-    - pyside2 >=5.15.2,<5.16.0
-    - pyqt5-qt5 5.15.2.*
-    - pyqtwebengine-qt5 5.15.2.*
+    - pyside2 >=5.15.2,<5.16.dev
 
 tests:
   - python:
@@ -53,6 +51,19 @@ tests:
       imports:
         - peak_finder
       pip_check: true
+  - script:
+      - pytest --ignore=tests/version_test.py
+    requirements:
+      run:
+        - pytest
+        - dash >=2.12.0,<3.0.dev
+        - dash-daq >=0.5.0,<0.6.dev
+        - flask >=3.0.3,<4.0.dev
+        - pyqtwebengine >=5.15.2,<5.15.7
+        - pyside2 >=5.15.2,<5.16.dev
+    files:
+      source:
+        - tests/
 
 about:
   summary: Peak Finder App
