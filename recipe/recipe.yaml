@@ -51,6 +51,19 @@ tests:
       imports:
         - peak_finder
       pip_check: true
+  - script:
+      - pytest --ignore=tests/version_test.py
+    requirements:
+      run:
+        - pytest
+        - dash >=2.12.0,<3.0.dev
+        - dash-daq >=0.5.0,<0.6.dev
+        - flask >=3.0.3,<4.0.dev
+        - pyqtwebengine >=5.15.2,<5.15.7
+        - pyside2 >=5.15.2,<5.16.dev
+    files:
+      source:
+        - tests/
 
 about:
   summary: Peak Finder App
