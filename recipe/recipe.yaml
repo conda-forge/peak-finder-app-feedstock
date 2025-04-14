@@ -44,8 +44,6 @@ requirements:
     - flask >=3.0.3,<4.0.0
     - pyqtwebengine >=5.15.2,<5.15.7
     - pyside2 >=5.15.2,<5.16.0
-    - pyqt5-qt5 5.15.2.*
-    - pyqtwebengine-qt5 5.15.2.*
 
 tests:
   - python:
